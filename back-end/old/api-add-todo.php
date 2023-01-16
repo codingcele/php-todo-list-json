@@ -9,7 +9,7 @@ header("Content-Type: application/json"); #specifica che le informazioni sono di
 $newTodo = $_GET["newTodoText"];
 
 
-$jsonTodoList = file_get_contents("todo.json", true);  /* da questa riga in poi aggiungiamo il nuovo todo */
+$jsonTodoList = file_get_contents("todo.json");  /* da questa riga in poi aggiungiamo il nuovo todo */
 $todoList = json_decode($jsonTodoList);
 
 $todoList[] = [
