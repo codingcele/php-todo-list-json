@@ -20,9 +20,9 @@ $todoList = [
 ];
 
 $jsonTodoList = json_encode($todoList);
-file_put_contents("todo.json", $jsonTodoList);
+file_put_contents("todo.json", $jsonTodoList); /* questo snippet crea il todo.json con i dati all'interno */
 
-$jsonTodoList = file_get_contents("todo.json", true);
+$jsonTodoList = file_get_contents("todo.json", true); /* da qui in poi aggiungiamo un elemento all'array di dati in todo.json */
 $todoList = json_decode($jsonTodoList);
 
 $todoList[] = [
@@ -33,6 +33,6 @@ $todoList[] = [
 $jsonTodoList = json_encode($todoList);
 file_put_contents("todo.json", $jsonTodoList);
 
-$jsonTodoList = file_get_contents("todo.json", true);
+$jsonTodoList = file_get_contents("todo.json");
 $todoList = json_decode($jsonTodoList);
 var_dump($todoList);

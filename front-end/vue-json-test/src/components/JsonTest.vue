@@ -33,7 +33,7 @@ export default {
           "newTodo": this.newTodo
         }
       };
-      axios.get(API_URL + "api-create-todo.php", params)
+      axios.get(API_URL + "api-add-todo.php", params)
         .then(() => {
           this.getAllData();
         })
