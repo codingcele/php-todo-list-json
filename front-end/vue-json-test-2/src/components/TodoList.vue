@@ -1,11 +1,12 @@
 <template>
   <div>
     <h1>
-      Hello World
+      Todo List
     </h1>
     <ul>
       <li v-for="(todoElem, index) in todoList" :key="index">
-        {{ todoElem.text }}
+        <span class="text" :class="{ strike: todoElem.completed }" @click="change(index)"> {{ todoElem.text }} </span>
+        <span></span>
       </li>
     </ul>
     <form @submit="addNewTask">
@@ -52,6 +53,9 @@ export default {
           this.newTodoText = "";
           this.getAllData();
         });
+    },
+    change(index) {
+      this.todoList[index].completed = !this.todoList[index].completed;
     }
   },
   mounted() {
@@ -61,5 +65,11 @@ export default {
 </script>
 
 <style>
+.text {
+  cursor: pointer;
+}
 
+.strike {
+  text-decoration: line-through;
+}
 </style>
