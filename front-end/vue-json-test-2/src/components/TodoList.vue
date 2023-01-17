@@ -5,7 +5,9 @@
     </h1>
     <ul>
       <li v-for="(todoElem, index) in todoList" :key="index">
-        <span class="text" :class="{ strike: todoElem.completed }" @click="change(index)"> {{ todoElem.text }} </span>
+        <span class="text" :class="{ strike: todoElem.completed }" @click="completeTask(index)">
+          {{ todoElem.text }}
+        </span>
         <span></span>
       </li>
     </ul>
@@ -54,14 +56,37 @@ export default {
           this.getAllData();
         });
     },
-    change(index) {
-      this.todoList[index].completed = !this.todoList[index].completed;
-    }
+    completeTask(index) {
+      console.log(index);
+
+      const text = this.todoList[index].text;
+      console.log(text);
+
+      const completed = !this.todoList[index].completed;
+      console.log(completed);
+
+
+
+      const params = {
+        params: {
+          "index": index,
+          "text": text,
+          "completed": completed
+        }
+      };
+
+      axios.get(API_URL + "api-complete-task.php", params)
+        .then(() => {
+          this.getAllData();
+        });
+    },
   },
   mounted() {
     this.getAllData();
   }
 }
+
+
 </script>
 
 <style>
