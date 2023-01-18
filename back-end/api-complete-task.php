@@ -1,5 +1,5 @@
 <?php
-#questa api serve a completare le tasks
+#questa api serve a segnre come completate le tasks
 
 header("Access-Control-Allow-Origin: http://localhost:5173"); #l'indirizzo deve essere quello del front end, ciò serve ad autorizzare il nostro server ad accettare richieste anche dal nostro progetto vue
 header("Access-Control-Allow-Headers: X-Requested-With"); #permette di ricevere informazioni
@@ -21,5 +21,6 @@ $todoList[$index] = [
 $jsonTodoList = json_encode($todoList);
 file_put_contents("todo.json", $jsonTodoList);
 
+echo true;
 
 ?>
