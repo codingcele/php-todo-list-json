@@ -7,16 +7,11 @@ header("Access-Control-Allow-Headers: X-Requested-With"); #permette di ricevere 
 header("Content-Type: application/json"); #specifica che le informazioni sono di tipo json per permettere poi a javascript di leggere correttamente i dati
 
 $index = intval($_GET["index"]);
-$text = $_GET["text"];
-$completed = filter_var($_GET["completed"], FILTER_VALIDATE_BOOLEAN);
 
 $jsonTodoList = file_get_contents("todo.json");  /* da questa riga in poi aggiungiamo il nuovo todo */
 $todoList = json_decode($jsonTodoList);
 
-$todoList[$index] = [
-    "text" => $text,
-    "completed" => $completed,
-];
+unset($todoList[$index]);
 
 $jsonTodoList = json_encode($todoList);
 file_put_contents("todo.json", $jsonTodoList);
